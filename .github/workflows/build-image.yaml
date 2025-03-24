@@ -1,6 +1,7 @@
 name: Build airflow image with dependencies
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "main"
