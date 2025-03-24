@@ -1,0 +1,3 @@
+httpx
+s3fs
+beautifulsoup4
