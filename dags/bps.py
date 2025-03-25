@@ -11,7 +11,6 @@ from bs4 import BeautifulSoup
 import httpx
 import os
 
-from notifier import PushoverNotifer
 
 NSW_PROPERTY_SALES_INFORMATION_URL = (
     "https://valuation.property.nsw.gov.au/embed/propertySalesInformation"
@@ -56,12 +55,6 @@ def download_link_to_s3(url, **kwargs):
     schedule_interval="@daily",
     start_date=days_ago(1),
     catchup=False,
-    on_success_callback=PushoverNotifer(
-        message="[Airflow] NSW Property Sales DAG succeeded!"
-    ),
-    on_failure_callback=PushoverNotifer(
-        message="[Airflow] NSW Property Sales DAG failed!"
-    ),
 )
 def dag():
     get_links_task = get_links()
